@@ -1,7 +1,7 @@
 package Homework_3;
 import java.util.Scanner;
 
-public class Task3g_LargestSumKSubsequence {
+public class Task3f_LargestSumKSubsequence {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
