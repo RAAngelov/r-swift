@@ -1,3 +1,4 @@
+package Homework_2;
 import java.util.Scanner;
 
 public class Task1f_ReadNNumbersOnNewLines {

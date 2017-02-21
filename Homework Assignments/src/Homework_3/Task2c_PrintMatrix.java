@@ -1,3 +1,4 @@
+package Homework_3;
 import java.util.Scanner;
 
 public class Task2c_PrintMatrix {
