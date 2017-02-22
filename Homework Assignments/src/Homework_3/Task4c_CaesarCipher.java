@@ -31,7 +31,7 @@ public class Task4c_CaesarCipher {
 				} else if (Str[i] == 'A'){
 					Str[i] = 'Z';
 				} else {
-					Str[i] = (char) (Str[i] + 1);
+					Str[i] = (char) (Str[i] - 1);
 				}
 			}
 				for (int i = 0;i < str.length();i++){
