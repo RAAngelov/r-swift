@@ -35,7 +35,7 @@ public class Task4c_CaesarCipher {
 				}
 			}
 				for (int i = 0;i < str.length();i++){
-					System.out.println(Str[i]);
+					System.out.print(Str[i]);
 				}
 			
 			
