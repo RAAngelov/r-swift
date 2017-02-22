@@ -14,12 +14,11 @@ public class Task4e_BracketMatching {
 				(Str[0] == '[' && Str[length - 1] == ']') ||
 				(Str[0] == '{' && Str[length - 1] == '}'))){
 			System.out.println("false");
-		}
-		if (length == 2 && (Str[0] == '(' && Str[length - 1] == ')') ||
+		} else if (length == 2 && (Str[0] == '(' && Str[length - 1] == ')') ||
 				(Str[0] == '[' && Str[length - 1] == ']') ||
 				(Str[0] == '{' && Str[length - 1] == '}')){
 			System.out.println("true");	
-		}
+		} else {
 		boolean flag = true;
 		for (int K = 0;K <= length - 2;K += 2){
 			for (int i = 1;i + K < length - 2;i++){
@@ -35,15 +34,20 @@ public class Task4e_BracketMatching {
 					        Str[i] = '0';
 					        Str[i + K + 1] = '0';
 					    }
-					}
-			
-				
-			}
+				}	
+		    }
 		}
-		if(flag){
-			System.out.println("true");
-		} else {
-			System.out.println("false");
+        for (int i = 1;i < length - 1;i++){
+        	if(Str[i] != '0'){
+        		flag = false;
+        	}
+        }
+        if (flag){
+        	System.out.println(flag);
+        } else {
+        	System.out.println(flag);
+         }
+		
 		}
          
 		
