@@ -11,7 +11,7 @@ public class Car {
 		if (carAge <= 8) return 1;
 		if (carAge > 8 && carAge <= 15) return 2;
 		if (carAge > 15 && carAge <= 25) return 3;
-		if (carAge >= 15) return 4;
+		if (carAge > 25) return 4;
 		return -1;
 	}
 	public int carTaxes(){
