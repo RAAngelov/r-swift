@@ -78,6 +78,30 @@ public class SwiftDate {
 				
 			}	
 		}
+		public String getInfo(){
+			if (!isLeapYear()){
+			    if (day < 10 && month >= 10){
+			       return (year + " " + month + " " +  "0" + day + " - " + getCentury() + " " + "century.");
+			    } else if (day >= 10 && month >= 10){
+				   return (year + " " + month + " " +  day + " - " + getCentury() + " " + "century.");	
+			    } else if (day < 10 && month < 10){
+				   return (year + " " + "0" + month + " " + "0" + day + " - " + getCentury() + " " + "century.");	
+				} else {
+				   return (year + " " + "0" + month + " " + day + " - " + getCentury() + " " + "century.");
+				}
+			} else {
+				if (day < 10 && month >= 10){
+				       return (year + " " + month + " " +  "0" + day + " - " + getCentury() + " " + "century." + "It is a LEAP year.");
+				    } else if (day >= 10 && month >= 10){
+					   return (year + " " + month + " " +  day + " - " + getCentury() + " " + "century." + "It is a LEAP year.");	
+				    } else if (day < 10 && month < 10){
+					   return (year + " " + "0" + month + " " + "0" + day + " - " + getCentury() + " " + "century." + "It is a LEAP year.");	
+					} else {
+					   return (year + " " + "0" + month + " " + day + " - " + getCentury() + " " + "century." + "It is a LEAP year.");
+					}
+				
+			}
+		}
 }
 
 
