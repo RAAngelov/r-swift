@@ -56,7 +56,7 @@ public class VehicleMonitor {
 		int carAge = currentYear - yearProduced;
 		return (0.16*power)*(1.25*carAge)*(0.05*fuelConsumption)*typeCoefficient;
 	}
-	private void incrementID(){
+	private static void incrementID(){
 		if (Integer.parseInt(ID) + 1 < 10){
 			ID = "000" + Integer.parseInt(ID) + 1;
 		}
