@@ -7,30 +7,29 @@ public class VehicleMonitor {
 	private int power;
 	private float fuelConsumption;
 	private int yearProduced;
-	private int licenseNO;
 	private float weight;
 	private String color;
-	private static String ID = "0000";
+	private static String ID = "000-1";
 
-	VehicleMonitor(String type,String model,int power,float fuelConsumption,int yearProduced,int licenseNO){
+	VehicleMonitor(String type,String model,int power,float fuelConsumption,int yearProduced){
 		this.type = type;
 		this.model = model;
 		this.power = power;
 		this.fuelConsumption = fuelConsumption;
 		this.yearProduced = yearProduced;
-		this.licenseNO = licenseNO;
 		weight = 2;
 		color = "N/A";
+		incrementID();
 	}
-	VehicleMonitor(String type,String model,int power,float fuelConsumption,int yearProduced,int licenseNO,float weight,String color){
+	VehicleMonitor(String type,String model,int power,float fuelConsumption,int yearProduced,float weight,String color){
 		this.type = type;
 		this.model = model;
 		this.power = power;
 		this.fuelConsumption = fuelConsumption;
 		this.yearProduced = yearProduced;
-		this.licenseNO = licenseNO;
-		this.weight = 2;
-		this.color = "N/A";
+		this.weight = weight;
+		this.color = color;
+		incrementID();
 	}
 	
 	private double computeTypeCoefficent(){
@@ -56,6 +55,25 @@ public class VehicleMonitor {
 		double typeCoefficient = computeTypeCoefficent();
 		int carAge = currentYear - yearProduced;
 		return (0.16*power)*(1.25*carAge)*(0.05*fuelConsumption)*typeCoefficient;
+	}
+	private void incrementID(){
+		if (Integer.parseInt(ID) + 1 < 10){
+			ID = "000" + Integer.parseInt(ID) + 1;
+		}
+		if (Integer.parseInt(ID) + 1 < 100){
+			ID = "00" + Integer.parseInt(ID) + 1;
+		}
+		if (Integer.parseInt(ID) + 1 < 1000){
+			ID = "0" + Integer.parseInt(ID) + 1;
+		}
+		if (Integer.parseInt(ID) + 1 < 10000){
+			ID = "" + Integer.parseInt(ID) + 1;
+		}	
+	}
+	
+	public void getDescription(double fuelPrice,double distance){
+		System.out.println(ID + " - " + model + "," + yearProduced + "," + color);
+		System.out.println("Insurance cost : " + getInsurancePrice() + " - " + "Travel cost : " +  calculateTripPrice(fuelPrice,distance));
 	}
 
 }
