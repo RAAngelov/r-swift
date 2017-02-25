@@ -8,7 +8,8 @@ public class VehicleMonitor {
 	private int yearProduced;
 	private float weight;
 	private String color;
-	private static int ID = 0;
+	private static int ID = -1;
+	private int licenseNo;
 
 	VehicleMonitor(String type, String model, int power, float fuelConsumption,
 			int yearProduced) {
@@ -19,7 +20,7 @@ public class VehicleMonitor {
 		this.yearProduced = yearProduced;
 		weight = 2;
 		color = "N/A";
-		ID++;
+		licenseNo = ++VehicleMonitor.ID;
 	}
 
 	VehicleMonitor(String type, String model, int power, float fuelConsumption,
@@ -31,7 +32,7 @@ public class VehicleMonitor {
 		this.yearProduced = yearProduced;
 		this.weight = weight;
 		this.color = "";
-		ID++;
+		licenseNo = ++VehicleMonitor.ID;
 	}
 
 	VehicleMonitor(String type, String model, int power, float fuelConsumption,
@@ -43,22 +44,19 @@ public class VehicleMonitor {
 		this.yearProduced = yearProduced;
 		this.weight = weight;
 		this.color = color;
-		ID++;
+		licenseNo = ++VehicleMonitor.ID;
 	}
 
 	private double computeTypeCoefficent() {
-		if (type == "car") {
+		if (type.equals("car")) {
 			return 1.00;
-		}
-		if (type == "suv") {
+		} else if (type.equals("suv")) {
 			return 1.12;
-		}
-		if (type == "truck") {
+		} else if (type.equals("truck")) {
 			return 1.20;
-		} else if (type == "motorcycle") {
+		} else {
 			return 1.50;
 		}
-		return 1.00;
 
 	}
 
@@ -75,27 +73,27 @@ public class VehicleMonitor {
 	}
 
 	public void getDescription(double fuelPrice, double distance) {
-		if (ID < 10) {
-			System.out.println("000" + VehicleMonitor.ID + " - " + model + ","
+		if (licenseNo < 10) {
+			System.out.println("000" + licenseNo + " - " + model + ","
 					+ yearProduced + "," + color);
 			System.out.println("Insurance cost : " + getInsurancePrice()
 					+ " - " + "Travel cost : "
 					+ calculateTripPrice(fuelPrice, distance));
-		} else if (10 <= ID && ID < 100) {
-			System.out.println("00" + VehicleMonitor.ID + " - " + model + ","
-					+ yearProduced + "," + color);
-			System.out.println("Insurance cost : " + getInsurancePrice()
-					+ " - " + "Travel cost : "
-					+ calculateTripPrice(fuelPrice, distance));
-
-		} else if (100 <= ID && ID < 1000) {
-			System.out.println("0" + VehicleMonitor.ID + " - " + model + ","
+		} else if (10 <= licenseNo && licenseNo < 100) {
+			System.out.println("00" + licenseNo + " - " + model + ","
 					+ yearProduced + "," + color);
 			System.out.println("Insurance cost : " + getInsurancePrice()
 					+ " - " + "Travel cost : "
 					+ calculateTripPrice(fuelPrice, distance));
 
-		} else if (1000 <= ID && ID < 10000) {
+		} else if (100 <= licenseNo && licenseNo < 1000) {
+			System.out.println("0" + licenseNo + " - " + model + ","
+					+ yearProduced + "," + color);
+			System.out.println("Insurance cost : " + getInsurancePrice()
+					+ " - " + "Travel cost : "
+					+ calculateTripPrice(fuelPrice, distance));
+
+		} else if (1000 <= licenseNo && licenseNo < 10000) {
 			System.out.println(VehicleMonitor.ID + " - " + model + ","
 					+ yearProduced + "," + color);
 			System.out.println("Insurance cost : " + getInsurancePrice()
