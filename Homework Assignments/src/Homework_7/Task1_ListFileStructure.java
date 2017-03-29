@@ -15,10 +15,10 @@ public class Task1_ListFileStructure {
 			File[] files = dir.listFiles();
 			for (File file : files) {
 				if (file.isDirectory()) {
-					System.out.println("directory:" + file.getCanonicalPath());
+					System.out.println("directory: " + file.getCanonicalPath());
 					displayDirectoryContents(file);
 				} else {
-					System.out.println("     file:" + file.getCanonicalPath());
+					System.out.println("     file: " + file.getCanonicalPath());
 				}
 			}
 		} catch (IOException e) {
