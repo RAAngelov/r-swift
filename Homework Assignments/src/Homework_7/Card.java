@@ -3,6 +3,11 @@ package Homework_7;
 @CardsAnnotation(type = "class",category = "CardGames",
 description = "Represents a card object used to play games with")
 public class Card implements Comparable<Card> {
+	public @interface CardsAnnotation {
+	    String type();
+	    String category();
+	    String description();
+	}
 	
 	CardSuit cs;
 	CardRank cr;
