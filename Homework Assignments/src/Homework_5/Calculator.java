@@ -1,6 +1,6 @@
 package Homework_5;
 
-public abstract class Calculator <T>{
+public abstract class Calculator {
 	static int sum(int a, int b){
         return a + b;
     }
