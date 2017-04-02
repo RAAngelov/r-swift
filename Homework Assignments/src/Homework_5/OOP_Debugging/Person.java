@@ -17,7 +17,7 @@ public class Person {
 		return name;
 	}
 
-	boolean tryBuy(Product product){
+	boolean buy(Product product){
 		if (balance >= product.getPrice()) {
 			balance -= product.getPrice();
 			products[productsCount++] = product;
@@ -29,7 +29,7 @@ public class Person {
 	Product[] getProducts(){
 		Product[] products = new Product[productsCount];
 		for (int i = 0;i < productsCount;i++){
-			products[i] = products[i];
+			products[i] = this.products[i];
 		}
 		return products;
 	}

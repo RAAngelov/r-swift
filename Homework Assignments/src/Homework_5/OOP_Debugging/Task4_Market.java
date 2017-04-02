@@ -1,10 +1,126 @@
 package Homework_5.OOP_Debugging;
 
-public class Task4_Market {
+import java.util.Scanner;
+
+class Task4_Market {
+
+	static Person[] people;
+	static Product[] products;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
 
+		String str = sc.nextLine();
+		if (!tryParsePeople(str)) {
+			return;
+		}
+
+		str = sc.nextLine();
+		if (!tryParseProducts(str)) {
+			return;
+		}
+
+		while (!(str = sc.nextLine()).equalsIgnoreCase("END")) {
+
+			int lastIdx = str.lastIndexOf(" ");
+			String username = str.substring(0, lastIdx);
+			String productName = str.substring(lastIdx + 1);
+
+			Person person = findPerson(username);
+			Product product = findProduct(productName);
+			if (person.buy(product)) {
+				System.out.println(person.getName() + " bought " + product.getName());
+			} else {
+				System.out.println(person.getName() + " can't afford " + product.getName());
+			}
+		}
+
+		for (Person person : people) {
+
+			String result = person.getName() + " - ";
+
+			Product[] productsBought = person.getProducts();
+
+			if (productsBought.length == 0) {
+				result += "Nothing bought";
+			} else {
+				for (int i = 0; i < productsBought.length - 1; i++) {
+					result += productsBought[i].getName() + ", ";
+				}
+				result += productsBought[productsBought.length - 1].getName();
+			}
+
+			System.out.println(result);
+		}
+
+	}
+
+	private static boolean tryParsePeople(String line) throws NumberFormatException {
+		String[] split = line.split(";");
+		people = new Person[split.length];
+		for (int i = 0; i < split.length; i++) {
+			String personInfo = split[i].trim();
+			String[] newSplit = personInfo.split("=");
+			String name = newSplit[0].trim();
+			double balance = Double.parseDouble(newSplit[1].trim());
+			if (name.isEmpty()) {
+				System.out.println("Name can't be empty.");
+				return false;
+			}
+			if (balance < 0) {
+				System.out.println("Balance can't be negative.");
+				return false;
+			}
+			people[i] = new Person(name, balance);
+		}
+
+		return true;
+	}
+
+	private static boolean tryParseProducts(String line) {
+		String[] split = line.split(";");
+		products = new Product[500];
+
+		for (int i = 0; i < split.length; i++) {
+			String productInfo = split[i].trim();
+			String[] newSplit = productInfo.split("=");
+			String name = newSplit[0].trim();
+
+			double price = Double.parseDouble(newSplit[1].trim());
+
+			if (name.isEmpty()) {
+				System.out.println("Name can't be empty.");
+				return false;
+			}
+			if (price < 0) {
+				System.out.println("Price can't be negative.");
+				return false;
+			}
+
+			products[i] = new Product(name, price);
+		}
+
+		return true;
+	}
+
+	private static Person findPerson(String username) {
+		for (Person person : people) {
+			if (person.getName().equals(username)) {
+				return person;
+			}
+		}
+
+		return null;
+	}
+
+	private static Product findProduct(String productName) {
+		for (Product product : products) {
+			if (product.getName().equals(productName)) {
+				return product;
+			}
+		}
+
+		return null;
 	}
 
 }
