@@ -1,4 +1,4 @@
-package Homework_5;
+package Homework_5.OOP_Debugging;
 
 public class Calculator {
 	static int sum(int a, int b){

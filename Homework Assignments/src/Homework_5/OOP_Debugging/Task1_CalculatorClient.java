@@ -1,4 +1,4 @@
-package Homework_5;
+package Homework_5.OOP_Debugging;
 
 import java.util.Scanner;
 
